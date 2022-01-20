@@ -40,9 +40,5 @@
     top: 0.5em;
     transition-duration: 250ms;
     cursor: text;
-
-    @media (max-width: 768px) {
-      top: .5em;
-    }
   }
 }

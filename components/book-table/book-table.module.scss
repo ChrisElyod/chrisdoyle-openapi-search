@@ -1,6 +1,8 @@
-.book-table {
+.fea-book-table {
   table-layout: fixed;
-  width: 100%;
+  width: 65%;
+  margin-right: auto;
+  margin-left: auto;
   th {
     border-bottom: black solid 1px;
     padding-top: 10px;
@@ -14,11 +16,16 @@
   }
 
   @media only screen and (max-width: 768px) {
+    width: 100%;
     th {
       padding-top: 5px;
       padding-bottom: 5px;
       padding-left: .5em;
       padding-right: .5em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1;
     }
 
     & tbody > tr > td > img {
@@ -32,4 +39,10 @@
       padding-right: .5em;
     }
   }
+}
+
+.fea-no-books {
+  margin-right: auto;
+  margin-left: auto;
+  width: fit-content;
 }
