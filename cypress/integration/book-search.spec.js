@@ -1,12 +1,3 @@
-// book-search.spec.js created with Cypress
-//
-// Start writing your Cypress tests below!
-// If you're unfamiliar with how Cypress works,
-// check out the link below and learn how to write your first test:
-// https://on.cypress.io/writing-first-test
-
-import { iteratee } from "lodash"
-
 describe("New Application - OpenLibrary API Search", () => {
   it("Searches for The Great Gatsby", () => {
     cy.visit("http://localhost:3000/");

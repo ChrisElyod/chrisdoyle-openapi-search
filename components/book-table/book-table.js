@@ -38,14 +38,29 @@ const BookTable = ({ query }) => {
       setBooks([]);
       return;
     }
-    fetch(`https://openlibrary.org/search.json?q=${query}&fields=author_name,title,cover_i,first_publish_year`)
+
+    // creation of query params below following recommendations from the fetch-api documentation
+    let url = new URL("https://openlibrary.org/search.json"),
+      params = { q: query, fields: "author_name,title,cover_i,publish_date" };
+
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+    fetch(url)
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
         throw res;
       }).then(data => {
-        setBooks(data.docs);
+        const books = data.docs;
+
+        setBooks(books.map(book => {
+          if (book.publish_date) {
+            book.publish_date.sort((fd, sd) => new Date(sd) - new Date(fd));
+          }
+
+          return book;
+        }));
       }).catch(err => console.error(err));
   }, [query]);
 
@@ -75,11 +90,11 @@ const BookTable = ({ query }) => {
           <th>Author</th>
           <th
             onClick={() => setCurrentSort({
-              column: 'first_publish_year',
-              direction: currentSort.column === 'first_publish_year' && currentSort.direction === "asc" ? "desc" : "asc"
+              column: 'publish_date',
+              direction: currentSort.column === 'publish_date' && currentSort.direction === "asc" ? "desc" : "asc"
             })}
           >
-            Published Date {getSortIcon('first_publish_year')}
+            Published Date {getSortIcon('publish_date')}
           </th>
         </tr>
       </thead>
@@ -95,19 +110,19 @@ const BookTable = ({ query }) => {
               tabIndex={0}
             >
               <img
-                alt={`${book.title} by: ${book.author_name}. Published: ${book.first_publish_year}`}
+                alt={`${book.title} by: ${book.author_name}. Published: ${book.publish_date ? book.publish_date : "N/A"}`}
                 src={book.cover_i && `https://covers.openlibrary.org/b/id/${book.cover_i}.jpg`}
               />
             </td>
             <td
               tabIndex={0}
             >   
-              {book.author_name || "Not Available..."}
+              {book.author_name?.join(", ") || "No Author Available..."}
             </td>
             <td
               tabIndex={0}
             >
-              {book.first_publish_year}
+              {book.publish_date ? book.publish_date[0] : "No Date Available..."}
             </td>
           </tr>
         )}

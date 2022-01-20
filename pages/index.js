@@ -7,7 +7,7 @@ import styles from '../styles/index.module.scss';
 export default function Home() {
   const [query, setQuery] = useState();
   return (
-    <>
+    <div>
       <Head>
         <title>React Assessment - Book Search</title>
         <meta name="description" content="React Assessment for Chris Doyle" />
@@ -20,7 +20,7 @@ export default function Home() {
         </p>
         <div>
           <Input
-            onChange={({ target: { value }}) => setQuery(value.replaceAll(" ", "+"))}
+            onChange={({ target: { value }}) => setQuery(value.replaceAll(" ", "+").trim())}
             label="Search Here!"
             aria-label="Search Books Here"
             style={{ marginBottom: "1.5em" }}
@@ -28,6 +28,6 @@ export default function Home() {
           <BookTable query={query} />
         </div>
       </main>
-    </>
+    </div>
   )
 }
