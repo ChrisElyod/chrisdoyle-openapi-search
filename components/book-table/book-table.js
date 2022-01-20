@@ -7,7 +7,7 @@ const BookTable = ({ query }) => {
 
   useEffect(() => {
     if (!query) return;
-    fetch(`http://openlibrary.org/search.json?q=${query}&fields=author_name,title,cover_i,first_publish_year`)
+    fetch(`https://openlibrary.org/search.json?q=${query}&fields=author_name,title,cover_i,first_publish_year`)
       .then((res) => {
         if (res.ok) {
           return res.json();
