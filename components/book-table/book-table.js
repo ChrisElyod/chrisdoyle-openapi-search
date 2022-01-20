@@ -87,13 +87,11 @@ const BookTable = ({ query }) => {
         {books && books.map((book, index) =>
           <tr key={index + (book.author_name || "")}>
             <td
-              style={{ borderBottom: 'black solid 1px', textAlign: "center", paddingTop: "1em", paddingBottom: "1em" }}
               tabIndex={0}
             >
               {book.title}
             </td>
             <td
-              style={{ borderBottom: 'black solid 1px', textAlign: "center", paddingTop: "1em", paddingBottom: "1em" }}
               tabIndex={0}
             >
               <img
@@ -102,13 +100,11 @@ const BookTable = ({ query }) => {
               />
             </td>
             <td
-              style={{ borderBottom: 'black solid 1px', textAlign: "center", paddingTop: "1em", paddingBottom: "1em" }}
               tabIndex={0}
             >   
               {book.author_name || "Not Available..."}
             </td>
             <td
-              style={{ borderBottom: 'black solid 1px', textAlign: "center", paddingTop: "1em", paddingBottom: "1em" }}
               tabIndex={0}
             >
               {book.first_publish_year}

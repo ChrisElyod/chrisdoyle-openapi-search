@@ -3,6 +3,14 @@
   width: 65%;
   margin-right: auto;
   margin-left: auto;
+
+  td {
+    border-bottom: black solid 1px;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
   th {
     border-bottom: black solid 1px;
     padding-top: 10px;
