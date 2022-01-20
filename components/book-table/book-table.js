@@ -19,12 +19,6 @@ const BookTable = ({ query }) => {
       }).catch(err => console.error(err));
   }, [query]);
 
-  // const sortTable = (column, direction) => {
-  //   if (column === currentSort.column) {
-  //     setBooks()
-  //   }
-  // }
-
   return (
     <table className={styles["book-table"]} cellSpacing={0}>
       <colgroup>
@@ -35,7 +29,7 @@ const BookTable = ({ query }) => {
       </colgroup>
       <thead>
         <tr>
-          <th onClick={() => sortTable('title', )}>Title</th>
+          <th>Title</th>
           <th>Book Cover</th>
           <th>Author</th>
           <th>Published Date</th>
@@ -43,7 +37,7 @@ const BookTable = ({ query }) => {
       </thead>
       <tbody>
         {books && books.map((book) =>
-          <tr>
+          <tr key={book.author_name + book.first_publish_year}>
             <td
               style={{ borderBottom: 'black solid 1px', textAlign: "center", paddingTop: "1em", paddingBottom: "1em" }}
               tabIndex={0}
