@@ -1,0 +1,35 @@
+.book-table {
+  table-layout: fixed;
+  width: 100%;
+  th {
+    border-bottom: black solid 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  & tbody > tr > td > img {
+    max-width: 150px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    th {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+
+    & tbody > tr > td > img {
+      max-width: 75px;
+    }
+    & tbody > tr > td {
+      max-width: 75px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+  }
+}

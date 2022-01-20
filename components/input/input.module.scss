@@ -1,0 +1,48 @@
+@mixin font-color {
+  color: black;
+}
+
+.fea-input-wrapper {
+  position: relative;
+
+  .fea-input {
+    border-radius: .5rem;
+    border: 1px black solid;
+    padding: .75em;
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      & + .fea-input-label {
+        top: -1.5em;
+        @include font-color;
+      }
+    }
+
+    &:not(:placeholder-shown) {
+      & + .fea-input-label {
+        @include font-color;
+        top: -1.5em;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: .4em;
+    }
+  }
+
+  .fea-input-label {
+    color: #5a5a5a;
+    position: absolute;
+    left: 0.75em;
+    top: 0.5em;
+    transition-duration: 250ms;
+    cursor: text;
+
+    @media (max-width: 768px) {
+      top: .5em;
+    }
+  }
+}
